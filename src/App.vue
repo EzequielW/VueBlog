@@ -5,7 +5,7 @@
     <v-content>
       <v-container fluid>
         <router-view/>
-        <router-link to="/write">
+        <router-link v-if="$store.state.loggedIn" to="/write">
           <v-btn
             color="green"
             fab

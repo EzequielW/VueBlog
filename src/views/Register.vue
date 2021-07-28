@@ -53,7 +53,7 @@
                         Submit
                         </v-btn>
 
-                        <a href="./login"><p id="login-link" class="body-2">Already have an account?</p></a>
+                        <a href="./login"><p id="login-link" class="body-2">Already have an account? Sign in</p></a>
                     </v-form>
                 </v-card>
             </v-col>
@@ -72,12 +72,10 @@ export default {
             email: '',
             password: '',
             usernameRules: [
-                v => !!v || 'Username is required',
-                v => v.length >= 8 || 'Username must be at least 8 characters long'
+                v => !!v || 'Username is required'
             ],
             emailRules: [
-                v => !!v || 'Email is required',
-                v => v.length >= 8 || 'Email must be at least 8 characters long'
+                v => !!v || 'Email is required'
             ],
             passwordRules: [
                 v => !!v || 'Password is required',
@@ -93,6 +91,7 @@ export default {
                 password: this.password
             })
             console.log(response.data)
+            this.$router.push('/login')
         }
     }
 }

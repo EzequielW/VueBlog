@@ -58,8 +58,7 @@ export default {
             email: '',
             password: '',
             emailRules: [
-                v => !!v || 'Email is required',
-                v => v.length >= 8 || 'Email must be at least 8 characters long'
+                v => !!v || 'Email is required'
             ],
             passwordRules: [
                 v => !!v || 'Password is required',
@@ -74,7 +73,8 @@ export default {
                     email: this.email,
                     password: this.password
                 })
-                this.$store.dispatch('setToken', response.data)
+                console.log(response.data)
+                this.$store.dispatch('setToken', response.data.auth_token)
                 this.$router.push('/')
             } catch(err){
                 console.log(err)

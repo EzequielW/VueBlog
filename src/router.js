@@ -5,6 +5,7 @@ import Register from './views/Register'
 import Login from './views/Login'
 import Post from './views/Post'
 import Write from './views/Write'
+import store from './store/store'
 
 Vue.use(VueRouter)
 
@@ -20,13 +21,19 @@ const router = new VueRouter({
             path: '/register',
             name: 'register',
             component: Register,
-            meta: { title: 'Register' }
+            meta: { 
+                title: 'Register',
+                hideForAuth: true
+            }
         },
         {
             path: '/login',
             name: 'login',
             component: Login,
-            meta: { title: 'Login' }
+            meta: { 
+                title: 'Login',
+                hideForAuth: true
+            }
         },
         {
             path: '/posts/:id',
@@ -38,14 +45,35 @@ const router = new VueRouter({
             path: '/write',
             name: 'write',
             component: Write,
-            meta: { title: 'Write' }
+            meta: { 
+                title: 'Write',
+                requiresAuth: true
+            }
         }
     ]
 })
 
 router.beforeEach((to, from, next) => {
     document.title = to.meta.title
-    next()
+    if(to.matched.some(record => record.meta.requiresAuth)){
+        if(store.state.loggedIn){
+            next()
+        }
+        else{
+            next({path: '/login'})
+        }
+    }
+    else if(to.matched.some(record => record.meta.hideForAuth)){
+        if(store.state.loggedIn){
+            next({path: '/'})
+        }
+        else{
+            next()
+        }
+    }
+    else{
+        next()
+    }
 })
 
 export default router

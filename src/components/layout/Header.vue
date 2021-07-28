@@ -4,15 +4,21 @@
       app
       color="indigo lighten-1"
       dark
-    >
-      <v-img 
-        class="mx-2"
-        :src="require('@/assets/logo.png')" 
-        max-height="40"
-        max-width="40"
-        contain
-      ></v-img>
-      <v-toolbar-title class="mx-2">Vuetify</v-toolbar-title>
+    > 
+      <router-link to="/">
+        <v-img 
+          class="mx-2"
+          :src="require('@/assets/logo.png')" 
+          max-height="40"
+          max-width="40"
+          contain
+        ></v-img>
+      </router-link>
+      <router-link 
+        to="/" 
+        tag="div" 
+        class="v-toolbar__title mx-2"
+      >Blog</router-link>
 
       <v-divider
         class="mx-4"
@@ -84,3 +90,9 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+  .v-toolbar__title{
+    cursor: pointer;
+  }
+</style>

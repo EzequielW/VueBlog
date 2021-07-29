@@ -1,45 +1,16 @@
 <template>
-    <v-row 
-        align="start"
-        justify="center"
-    >
-        <v-col
-            cols="5"
-        >
-            <v-card
-                id="login-wrap"
-                elevation="15"
-            >
-                <v-form
-                    ref="form"
-                    class="ma-3 pa-6"
-                >
+    <v-row align="start" justify="center">
+        <v-col cols="5">
+            <v-card id="login-wrap" elevation="15">
+                <v-form ref="form" class="ma-3 pa-6">
                     <h1 class="display-1">Sign In</h1>
-                    <v-text-field
-                        v-model="email"
-                        :rules="emailRules"
-                        label="Email"
-                        required
-                    ></v-text-field>
+                    <v-text-field v-model="email" :rules="emailRules" label="Email" required/>
 
-                    <v-text-field
-                        v-model="password"
-                        :rules="passwordRules"
-                        :type="'password'"
-                        label="Password"
-                        required
-                    ></v-text-field>
+                    <v-text-field v-model="password" :rules="passwordRules" :type="'password'" label="Password" required/>
 
                     <a href=""><p text-align="end" class="caption">Forgot password?</p></a>
 
-                    <v-btn
-                        color="indigo lighten-1 white--text"
-                        class="mr-4"
-                        block
-                        @click="login"
-                    >
-                    Submit
-                    </v-btn>
+                    <v-btn color="indigo lighten-1 white--text" class="mr-4" block @click="login">Submit</v-btn>
 
                     <a href="./register"><p id="register-link" class="body-2">Did you not Sign Up yet?</p></a>
                 </v-form>

@@ -1,29 +1,12 @@
 <template>
     <div>
-    <v-app-bar
-      app
-      color="indigo lighten-1"
-      dark
-    > 
+    <v-app-bar app color="indigo lighten-1" dark> 
       <router-link to="/">
-        <v-img 
-          class="mx-2"
-          :src="require('@/assets/logo.png')" 
-          max-height="40"
-          max-width="40"
-          contain
-        ></v-img>
+        <v-img class="mx-2" :src="require('@/assets/logo.png')" max-height="40" max-width="40" contain/>
       </router-link>
-      <router-link 
-        to="/" 
-        tag="div" 
-        class="v-toolbar__title mx-2"
-      >Blog</router-link>
+      <v-toolbar-title>VueBlog</v-toolbar-title>
 
-      <v-divider
-        class="mx-4"
-        vertical
-      ></v-divider>
+      <v-divider class="mx-4" vertical/>
 
       <v-toolbar-items>
         <v-btn text to="/">Home</v-btn>

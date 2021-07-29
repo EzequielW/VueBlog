@@ -2,10 +2,7 @@
     <v-card class="comment-item">
         <v-card-title>
             <v-avatar class="comment-avatar">
-                        <img
-                            src="https://cdn.vuetifyjs.com/images/john.jpg"
-                            alt="John"
-                        >
+                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
             </v-avatar> 
             <a href="#">Username</a>
         </v-card-title>

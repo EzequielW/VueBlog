@@ -1,15 +1,13 @@
 <template>
-    
-            <v-card elevation="0">
-                <div class="post-wrap">
-                    <v-card-subtitle>{{date}}</v-card-subtitle>
-                    <v-card-title class="justify-center single-post-title">{{title}}</v-card-title>
-                    <v-card-text>
-                        <div class="post-content" v-html="content"></div>
-                    </v-card-text>
-                </div>
-            </v-card>
-     
+    <v-card elevation="0">
+        <div class="post-wrap">
+            <v-card-subtitle>{{date}}</v-card-subtitle>
+            <v-card-title class="justify-center single-post-title">{{title}}</v-card-title>
+            <v-card-text>
+                <div class="post-content" v-html="content"></div>
+            </v-card-text>
+        </div>
+    </v-card>
 </template>
 
 <script>

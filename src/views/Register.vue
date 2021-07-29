@@ -1,57 +1,19 @@
 <template>
     <v-container fill-height fluid>
-        <v-row 
-            align="start"
-            justify="center"
-        >
-            <v-col
-                cols="5"
-            >
-                <v-card
-                    id="register-wrap"
-                    elevation="15"
-                >
-                    <v-form
-                        ref="form"
-                        class="ma-3 pa-6"
-                    >
+        <v-row align="start" justify="center">
+            <v-col cols="5">
+                <v-card id="register-wrap" elevation="15">
+                    <v-form ref="form" class="ma-3 pa-6">
                         <h1 class="display-1">Sign Up</h1>
-                        <v-text-field
-                            v-model="username"
-                            :rules="usernameRules"
-                            label="Username"
-                            required
-                        ></v-text-field>
+                        <v-text-field v-model="username" :rules="usernameRules" label="Username" required/>
 
-                        <v-text-field
-                            v-model="email"
-                            :rules="emailRules"
-                            label="Email"
-                            required
-                        ></v-text-field>
+                        <v-text-field v-model="email" :rules="emailRules" label="Email" required/>
 
-                        <v-text-field
-                            v-model="password"
-                            :rules="passwordRules"
-                            :type="'password'"
-                            label="Password"
-                            required
-                        ></v-text-field>
+                        <v-text-field v-model="password" :rules="passwordRules" :type="'password'" label="Password" required/>
 
-                        <v-checkbox
-                            :rules="[v => !!v || 'You must agree to continue!']"
-                            label="You agree with our terms of service"
-                            required
-                        ></v-checkbox>
+                        <v-checkbox :rules="[v => !!v || 'You must agree to continue!']" label="You agree with our terms of service" required/>
 
-                        <v-btn
-                            color="indigo darken-3 white--text"
-                            class="mr-4"
-                            block
-                            @click="register"
-                        >
-                        Submit
-                        </v-btn>
+                        <v-btn color="indigo darken-3 white--text" class="mr-4" block @click="register">Submit</v-btn>
 
                         <a href="./login"><p id="login-link" class="body-2">Already have an account? Sign in</p></a>
                     </v-form>

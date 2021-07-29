@@ -2,25 +2,17 @@
     <v-card class="post-item">
         <v-row class="post-wrap" align="center">
             <v-col cols="5" class="post-image">
-                <v-img 
-                    src="https://via.placeholder.com/348x248"
-                    aspect-ratio="1.4"
-                    contain
-                ></v-img>
+                <v-img src="https://via.placeholder.com/348x248" aspect-ratio="1.4" contain/>
             </v-col>
 
             <v-col cols="7">
                 <router-link :to="'/posts/' + post._id">
-                    <v-card-title
-                        class="post-title"
-                    >{{post.title}}</v-card-title>
+                    <v-card-title class="post-title">{{post.title}}</v-card-title>
                 </router-link>
+                
                 <v-card-subtitle class="post-user">
                     <v-avatar class="post-avatar">
-                        <img
-                            src="https://cdn.vuetifyjs.com/images/john.jpg"
-                            alt="John"
-                        >
+                        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
                     </v-avatar> 
                     <a href="#">{{post.author_id.name}}</a>
                 </v-card-subtitle>

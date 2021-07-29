@@ -1,11 +1,7 @@
 <template>
   <div>
     <div class="banner">
-      <v-img
-        class="white--text banner-image"
-        aspect-ratio="4.5"
-        src="../assets/danial-ricaros-FCHlYvR5gJI-unsplash.jpg"
-      >
+      <v-img class="white--text banner-image" aspect-ratio="4.5" src="../assets/danial-ricaros-FCHlYvR5gJI-unsplash.jpg">
         <v-row class="banner-wrap" align-content="center">
           <div class="banner-content">
               <p class="banner-title display-3">Welcome to my blog</p>
@@ -19,11 +15,7 @@
         <v-row>
           <v-col cols="9">
             <PostList v-bind:posts="posts"/>
-            <v-pagination
-              :length="15"
-              :total-visible="7"
-              circle
-            ></v-pagination>
+            <v-pagination :length="15" :total-visible="7" circle/>
           </v-col>
 
           <v-col cols="3" class="side-panel">

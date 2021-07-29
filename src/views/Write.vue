@@ -1,10 +1,7 @@
 <template>
     <v-row align="center" justify="center">
         <v-card>
-            <v-form
-                ref="form"
-                class="ma-3 pa-6"
-            >   
+            <v-form ref="form" class="ma-3 pa-6">   
                 <v-text-field label="Title" v-model="title" :rules="titleRules" required></v-text-field>
 
                 <ImageInput v-model="preview">
@@ -20,11 +17,7 @@
 
                 <SimpleEditor class="editor" v-model="content" :rules="contentRules" required/>
 
-                <v-btn 
-                    color="indigo lighten-1 white--text"             
-                    class="post-submit mr-2"
-                    @click="postArticle"
-                >submit</v-btn>
+                <v-btn color="indigo lighten-1 white--text" class="post-submit mr-2" @click="postArticle">submit</v-btn>
             </v-form>
         </v-card>
     </v-row>

@@ -1,6 +1,5 @@
 <template>
-    <div>
-    <v-app-bar app color="indigo lighten-1" dark> 
+    <v-app-bar app color="indigo lighten-1" fade-on-scroll dark> 
       <router-link to="/">
         <v-img class="mx-2" :src="require('@/assets/logo.png')" max-height="40" max-width="40" contain/>
       </router-link>
@@ -25,41 +24,11 @@
         <v-btn @click="logout" icon><v-icon>mdi-logout</v-icon></v-btn>
       </div>
     </v-app-bar>
-    <!--<v-navigation-drawer
-      v-model="drawer"
-      app
-    >
-      <v-list dense>
-
-        <v-list-item link to="/">
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-list-item link to="register">
-          <v-list-item-action>
-            <v-icon>mdi-account</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Register</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-      </v-list>
-    </v-navigation-drawer>-->
-    </div>
 </template>
 
 <script>
 export default {
     name: 'Header',
-    data: () => ({
-      drawer: null,
-    }),
     methods: {
       logout() {
         this.$store.dispatch('removeToken');

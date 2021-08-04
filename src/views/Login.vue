@@ -1,22 +1,22 @@
 <template>
-    <v-row align="start" justify="center">
-        <v-col cols="5">
-            <v-card id="login-wrap" elevation="15">
-                <v-form ref="form" class="ma-3 pa-6">
-                    <h1 class="display-1">Sign In</h1>
-                    <v-text-field v-model="email" :rules="emailRules" label="Email" required/>
+    <v-container fill-height fluid>
+        <v-row class="my-5" align="start" justify="center">
+            <v-col cols="4">
+                <v-card class="pa-10 rounded-lg" elevation="15">
+                    <h1 class="display-1 mt-3 mb-10">Sign In</h1>
+                    <v-form ref="form" class="px-8 mb-6">
+                        <v-text-field v-model="email" :rules="emailRules" label="Email" required/>
+                        <v-text-field v-model="password" :rules="passwordRules" :type="'password'" label="Password" required/>
+                        
+                        <p class="body-2 mt-2 mb-4"><a href="">Forgot password?</a></p>
 
-                    <v-text-field v-model="password" :rules="passwordRules" :type="'password'" label="Password" required/>
-
-                    <a href=""><p text-align="end" class="caption">Forgot password?</p></a>
-
-                    <v-btn color="indigo lighten-1 white--text" class="mr-4" block @click="login">Submit</v-btn>
-
-                    <a href="./register"><p id="register-link" class="body-2">Did you not Sign Up yet?</p></a>
-                </v-form>
-            </v-card>
-        </v-col>
-    </v-row>
+                        <v-btn color="indigo lighten-1 white--text" block @click="login">Submit</v-btn>           
+                    </v-form>
+                    <p class="body-2 text-center">Not a member yet? <a href="./register">Sign up</a></p>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
@@ -58,20 +58,9 @@ export default {
 <style scoped>
     h1 {
         text-align:center;
-        margin-bottom: 15%;
-    }
-
-    p {
-        text-align: end;
     }
 
     #register-link {
         text-align: center;
-        margin-top: 30%
-    }
-
-    #login-wrap {
-        border-radius: 1%;
-        padding: 5%;
     }
 </style>

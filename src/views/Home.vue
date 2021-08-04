@@ -1,15 +1,12 @@
 <template>
   <div>
-    <div class="banner">
-      <v-img class="white--text banner-image" aspect-ratio="4.5" src="../assets/danial-ricaros-FCHlYvR5gJI-unsplash.jpg">
-        <v-row class="banner-wrap" align-content="center">
-          <div class="banner-content">
-              <p class="banner-title display-3">Welcome to my blog</p>
-              <p class="banner-title headline">Enjoy your stay and post your articles</p>
-          </div>
-        </v-row>
-      </v-img>
-    </div>
+    <v-img class="white--text d-flex align-center" aspect-ratio="4.5" src="../assets/danial-ricaros-FCHlYvR5gJI-unsplash.jpg" 
+      gradient="to top right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)">
+      <div class="pa-16">
+          <p class="display-3">Welcome to my blog</p>
+          <p class="headline">Enjoy your stay and post your articles</p>
+      </div>
+    </v-img>
 
     <v-container>
         <v-row>
@@ -18,7 +15,7 @@
             <v-pagination :length="15" :total-visible="7" circle/>
           </v-col>
 
-          <v-col cols="3" class="side-panel">
+          <v-col cols="3" class="side-panel pl-8">
             <SidePanel />
           </v-col>
         </v-row>
@@ -50,26 +47,4 @@ export default {
 </script>
 
 <style scoped>
-  .banner-wrap{
-    background: rgba(0, 0, 0, 0.5);
-    height: 100%;
-  }
-
-  .banner-content{
-    padding-left: 10%;
-  }
-
-  .banner-content p {
-    display: block;
-  }
-
-  .banner{
-    margin-right: -12px;
-    margin-left: -12px;
-    margin-top: -12px;
-  }
-
-  .side-panel {
-    padding-left: 24px;
-  }
 </style>

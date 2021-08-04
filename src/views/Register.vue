@@ -1,22 +1,19 @@
 <template>
     <v-container fill-height fluid>
-        <v-row align="start" justify="center">
-            <v-col cols="5">
-                <v-card id="register-wrap" elevation="15">
-                    <v-form ref="form" class="ma-3 pa-6">
-                        <h1 class="display-1">Sign Up</h1>
+        <v-row class="my-5" align="start" justify="center">
+            <v-col cols="4">
+                <v-card class="pa-10 rounded-lg" elevation="15">
+                    <h1 class="display-1 mt-3 mb-10">Sign Up</h1>
+                    <v-form ref="form" class="px-8 mb-6">
                         <v-text-field v-model="username" :rules="usernameRules" label="Username" required/>
-
                         <v-text-field v-model="email" :rules="emailRules" label="Email" required/>
-
                         <v-text-field v-model="password" :rules="passwordRules" :type="'password'" label="Password" required/>
 
-                        <v-checkbox :rules="[v => !!v || 'You must agree to continue!']" label="You agree with our terms of service" required/>
+                        <v-checkbox class="my-2" :rules="[v => !!v || 'You must agree to continue!']" label="Do you agree with our terms?" required/>
 
-                        <v-btn color="indigo darken-3 white--text" class="mr-4" block @click="register">Submit</v-btn>
-
-                        <a href="./login"><p id="login-link" class="body-2">Already have an account? Sign in</p></a>
+                        <v-btn color="indigo darken-3 white--text" block @click="register">Submit</v-btn>
                     </v-form>
+                    <p class="body-2 text-center">Already have an account? <a href="./login">Sign in</a></p>
                 </v-card>
             </v-col>
         </v-row>
@@ -62,20 +59,9 @@ export default {
 <style scoped>
     h1 {
         text-align:center;
-        margin-bottom: 15%;
-    }
-
-    p {
-        text-align: end;
     }
 
     #login-link {
         text-align: center;
-        margin-top: 30%
-    }
-
-    #register-wrap {
-        border-radius: 1%;
-        padding: 5%;
     }
 </style>

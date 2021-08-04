@@ -3,14 +3,12 @@
     <Header />
 
     <v-main>
-      <v-container fluid>
-        <router-view/>
-        <router-link v-if="$store.state.loggedIn" to="/write">
-          <v-btn color="green" class="v-btn--example" fab fixed large dark bottom right>
-            <v-icon>mdi-plus</v-icon>
-          </v-btn>
-        </router-link>
-      </v-container>
+      <router-view/>
+      <router-link v-if="$store.state.loggedIn" to="/write">
+        <v-btn color="green" class="v-btn--example" fab fixed large dark bottom right>
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+      </router-link>
     </v-main>
     
     <v-footer color="indigo lighten-1">
@@ -30,5 +28,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+  a {
+    text-decoration: none;
+  }
 </style>

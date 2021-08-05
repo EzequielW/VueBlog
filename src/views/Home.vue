@@ -8,14 +8,14 @@
       </div>
     </v-img>
 
-    <v-container>
+    <v-container class="py-8 px-10">
         <v-row>
-          <v-col cols="9">
-            <PostList v-bind:posts="posts"/>
+          <v-col lg="9" sm="12">
+            <PostList class="pb-6" v-bind:posts="posts"/>
             <v-pagination :length="15" :total-visible="7" circle/>
           </v-col>
 
-          <v-col cols="3" class="side-panel pl-8">
+          <v-col lg="3" sm="12" class="pl-4">
             <SidePanel />
           </v-col>
         </v-row>

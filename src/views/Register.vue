@@ -1,7 +1,7 @@
 <template>
     <v-container fill-height fluid>
         <v-row class="my-5" align="start" justify="center">
-            <v-col cols="4">
+            <v-col cols="11" sm="7" md="5">
                 <v-card class="pa-10 rounded-lg" elevation="15">
                     <h1 class="display-1 mt-3 mb-10">Sign Up</h1>
                     <v-form ref="form" class="px-8 mb-6">

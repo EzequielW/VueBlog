@@ -1,25 +1,37 @@
 <template>
     <v-row align="center" justify="center">
-        <v-card>
-            <v-form ref="form" class="ma-3 pa-6">   
-                <v-text-field label="Title" v-model="title" :rules="titleRules" required></v-text-field>
+        <v-col cols="9">
+            <v-card>
+                <v-form ref="form" class="ma-3 pa-6">
+                    <h1 class="display-1 text-center mb-6">List preview</h1>
+                    <v-card class="d-flex flex-no-wrap mb-8"> 
+                        <v-col cols="4">
+                            <ImageInput class="input-image" v-model="preview">
+                                <div slot="activator">
+                                    <v-img class="grey lighten-3 d-flex align-center" height="250px" max-width="400px" v-ripple v-if="!preview">
+                                        <p class="text-center">Image preview</p>
+                                    </v-img>
+                                    <v-img height="250px" max-width="400px" v-else :src="preview.imageURL"></v-img>
+                                </div>
+                            </ImageInput>
+                        </v-col>
+                        <v-col cols="8 pa-0">
+                            <v-card-title class="py-0">
+                                <v-textarea label="Title" v-model="title" :rules="titleRules" rows="1" auto-grow required counter clearable></v-textarea>
+                            </v-card-title>
+                            <v-card-text class="py-0">
+                                <v-textarea label="Introduction" v-model="intro" :rules="introRules" rows="4" required counter clearable></v-textarea>
+                            </v-card-text>
+                        </v-col>
+                    </v-card>
 
-                <ImageInput v-model="preview">
-                    <div slot="activator">
-                        <v-img size="150px" v-ripple v-if="!preview" class="grey lighten-3 mb-3">
-                            <span>Add preview image</span>
-                        </v-img>
-                        <v-img size="150px" v-else :src="preview.imageURL" aspect-ratio="1.4" contain></v-img>
-                    </div>
-                </ImageInput>
+                    <h1 class="display-1 text-center mb-6">Main content</h1>
+                    <SimpleEditor class="editor" v-model="content" :rules="contentRules" required/>
 
-                <v-textarea label="Introduction" v-model="intro" :rules="introRules" required></v-textarea>
-
-                <SimpleEditor class="editor" v-model="content" :rules="contentRules" required/>
-
-                <v-btn color="indigo lighten-1 white--text" class="post-submit mr-2" @click="postArticle">submit</v-btn>
-            </v-form>
-        </v-card>
+                    <v-btn color="indigo lighten-1 white--text" class="mr-2 mt-2" @click="postArticle">submit</v-btn>
+                </v-form>
+            </v-card>
+        </v-col>
     </v-row>
 </template>
 
@@ -81,7 +93,7 @@ export default {
         height: 400px;
     }
 
-    .post-submit {
-        margin-top: 2%;
+    .input-image{
+        cursor: pointer;
     }
 </style>

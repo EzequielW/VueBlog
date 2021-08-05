@@ -1,5 +1,5 @@
 <template>
-    <v-app-bar app color="indigo lighten-1" fade-on-scroll dark> 
+    <v-app-bar app color="indigo lighten-1 px-14" fade-on-scroll dark> 
       <router-link to="/">
         <v-img class="mx-2" :src="require('@/assets/logo.png')" max-height="40" max-width="40" contain/>
       </router-link>

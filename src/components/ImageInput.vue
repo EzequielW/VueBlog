@@ -5,7 +5,7 @@
       <slot name="activator"></slot>
     </div>
     <!-- image input: style is set to hidden and assigned a ref so that it can be triggered -->
-    <input type="file" ref="file" :name="uploadFieldName" enctype="multipart/form-data"
+    <input type="file" ref="file" :name="uploadFieldName"
         @change="onFileChange($event.target.name, $event.target.files)" style="display:none">
     <!-- error dialog displays any potential error messages -->
     <v-dialog v-model="errorDialog" max-width="300">
@@ -51,12 +51,9 @@
             this.errorDialog = true
             this.errorText = 'Your file is too big! Please select an image under 1MB'
           } else {
-            // Append file into FormData and turn file into image URL
-            let formData = new FormData()
             let imageURL = URL.createObjectURL(imageFile)
-            formData.append(fieldName, imageFile)
             // Emit the FormData and image URL to the parent component
-            this.$emit('input', { formData, imageURL })
+            this.$emit('input', {imageURL, imageFile})
           }
         }
       }

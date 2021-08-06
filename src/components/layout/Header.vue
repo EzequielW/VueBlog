@@ -19,8 +19,8 @@
 
         <!-- Sign buttons on sm plus devices -->
         <v-toolbar-items v-if="!$store.state.loggedIn && $vuetify.breakpoint.smAndUp">
-          <v-btn text to="register">Sign in</v-btn>
-          <v-btn text to="login">Sign up</v-btn>
+          <v-btn text to="login">Sign in</v-btn>
+          <v-btn text to="register">Sign up</v-btn>
         </v-toolbar-items>
 
         <!-- Actions when already logged in -->

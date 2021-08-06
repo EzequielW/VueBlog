@@ -28,7 +28,7 @@
                     <h1 class="display-1 text-center mb-6">Main content</h1>
                     <SimpleEditor class="editor" v-model="content" :rules="contentRules" required/>
 
-                    <v-btn color="indigo lighten-1 white--text" class="mr-2 mt-2" @click="postArticle">submit</v-btn>
+                    <v-btn color="indigo lighten-1 white--text" class="mr-2 mt-6" @click="postArticle">submit</v-btn>
                 </v-form>
             </v-card>
         </v-col>
@@ -70,12 +70,14 @@ export default {
     },
     methods: {
         async postArticle() {
-            const response = await Api().post('/posts', {
-                title: this.title,
-                intro: this.intro,
-                content: this.content,
-                author_id: this.$store.state.userId
-            },
+            const formData = new FormData();
+            formData.append('title', this.title);
+            formData.append('intro', this.intro);
+            formData.append('content', this.content);
+            formData.append('author_id', this.$store.state.userId);
+            formData.append('file', this.preview.imageFile);
+
+            const response = await Api().post('/posts', formData,
             {
                 headers: {
                     'auth-token': this.$store.state.token

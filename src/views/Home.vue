@@ -8,15 +8,19 @@
       </div>
     </v-img>
 
-    <v-container class="py-8 px-10">
-        <v-row>
-          <v-col lg="9" sm="12">
-            <PostList class="pb-6" v-bind:posts="posts"/>
-            <v-pagination :length="15" :total-visible="7" circle/>
-          </v-col>
+    <v-container fluid>
+        <v-row justify="center">
+          <v-col cols="12" md="10">
+            <v-row>
+              <v-col cols="12" md="9">
+                <PostList v-bind:posts="posts"/>
+                <v-pagination :length="15" :total-visible="7" circle/>
+              </v-col>
 
-          <v-col lg="3" sm="12" class="pl-4">
-            <SidePanel />
+              <v-col class="pl-4" cols="12" md="3">
+                <SidePanel />
+              </v-col>
+            </v-row>
           </v-col>
         </v-row>
     </v-container>

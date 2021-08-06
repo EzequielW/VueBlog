@@ -1,10 +1,10 @@
 <template>
-    <v-card class="post-item">
+    <v-card class="post-item mb-6">
         <div class="d-flex flex-sm-row flex-column">
             <v-col class="pr-sm-0 pb-0 pb-sm-3" cols="12" sm="5" md="4">
-                <v-img src="https://via.placeholder.com/400x400" max-height="250px"/>
+                <v-img :src="imgPath" max-height="250px"/>
             </v-col>
-            <v-col class="pa-0" cols="12" sm="9" md="8">
+            <v-col class="px-0 pt-0 pb-3" cols="12" sm="7" md="8">
                 <router-link :to="'/posts/' + post._id">
                     <v-card-title class="pb-1">{{post.title}}</v-card-title>
                 </router-link>
@@ -18,16 +18,21 @@
                     </a>
                 </v-card-subtitle>
 
-                <v-card-text class="post-text body-1">{{post.intro}}</v-card-text>
+                <v-card-text class="post-text body-2 pb-0" v-show="$vuetify.breakpoint.smAndUp">{{post.intro}}</v-card-text>
             </v-col>
         </div>
     </v-card>
 </template>
 
 <script>
+import api from '../services/Api'
+
 export default {
     name: 'PostItem',
-    props: ['post']
+    props: ['post'],
+    data: function() {
+        return {imgPath: api().defaults.baseURL + 'images/' + this.$props.post.imgPreview}
+    }
 }
 </script>
 
@@ -40,7 +45,7 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
     }
 </style>

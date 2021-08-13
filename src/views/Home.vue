@@ -2,7 +2,7 @@
   <div>
     <v-img class="white--text d-flex align-center" aspect-ratio="4.5" src="../assets/danial-ricaros-FCHlYvR5gJI-unsplash.jpg" 
       gradient="to top right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)">
-      <div class="pa-16">
+      <div class="ma-16 pa-16">
           <p class="display-3">Welcome to my blog</p>
           <p class="headline">Enjoy your stay and post your articles</p>
       </div>

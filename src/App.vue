@@ -32,4 +32,8 @@ export default {
   a {
     text-decoration: none;
   }
+
+  .container{
+    background-color: #F8F8F8;
+  }
 </style>

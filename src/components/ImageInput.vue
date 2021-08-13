@@ -27,7 +27,7 @@
       errorDialog: null,
       errorText: '',
       uploadFieldName: 'file',
-      maxSize: 1024 * 5
+      maxSize: 1024
     }),
     props: {
     // Use "value" to enable using v-model

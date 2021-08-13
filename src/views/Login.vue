@@ -2,6 +2,7 @@
     <v-container fill-height fluid>
         <v-row class="my-5" align="start" justify="center">
             <v-col cols="11" sm="7" md="5">
+                <v-alert type="error" v-if="errorMessage" transition="slide-y-transition">{{errorMessage}}</v-alert>
                 <v-card class="pa-10 rounded-lg" elevation="15">
                     <h1 class="display-1 mt-3 mb-10">Sign In</h1>
                     <v-form ref="form" class="px-8 mb-6">
@@ -34,7 +35,8 @@ export default {
             passwordRules: [
                 v => !!v || 'Password is required',
                 v => v.length >= 8 || 'Password must be at least 8 characters long'
-            ]
+            ],
+            errorMessage: null
         }
     },
     methods: {
@@ -44,11 +46,10 @@ export default {
                     email: this.email,
                     password: this.password
                 })
-                console.log(response.data)
                 this.$store.dispatch('setToken', response.data.auth_token)
                 this.$router.push('/')
             } catch(err){
-                console.log(err)
+                this.errorMessage = err.response.data
             }
         }
     }

@@ -2,6 +2,7 @@
     <v-container fill-height fluid>
         <v-row class="my-5" align="start" justify="center">
             <v-col cols="11" sm="7" md="5">
+                <v-alert type="error" v-if="errorMessage">{{errorMessage}}</v-alert>
                 <v-card class="pa-10 rounded-lg" elevation="15">
                     <h1 class="display-1 mt-3 mb-10">Sign Up</h1>
                     <v-form ref="form" class="px-8 mb-6">
@@ -39,18 +40,24 @@ export default {
             passwordRules: [
                 v => !!v || 'Password is required',
                 v => v.length >= 8 || 'Password must be at least 8 characters long'
-            ]
+            ],
+            errorMessage: null
         }
     },
     methods: {
         async register(){
-            const response = await AuthenticationService.register({
-                name: this.username,
-                email: this.email,
-                password: this.password
-            })
-            console.log(response.data)
-            this.$router.push('/login')
+            try{
+                const response = await AuthenticationService.register({
+                    name: this.username,
+                    email: this.email,
+                    password: this.password
+                })
+                console.log(response.data)
+                this.$router.push('/login')
+            } catch(err) {
+                this.errorMessage = err.response.data
+            }
+            
         }
     }
 }

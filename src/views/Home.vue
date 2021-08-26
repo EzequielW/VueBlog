@@ -45,7 +45,7 @@ export default {
     created() {
         api().get('posts')
         .then(res => this.posts = res.data)
-        .catch(err => console.log(err))
+        .catch(err => console.log(err.response.data))
     },
 }
 </script>

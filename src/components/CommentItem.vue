@@ -1,25 +1,32 @@
 <template>
-    <v-card class="comment-item">
-        <v-card-title>
-            <v-avatar class="comment-avatar">
-                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
-            </v-avatar> 
-            <a href="#">Username</a>
-        </v-card-title>
+    <v-card class="mt-4 pa-5">
+        <div class="d-flex justify-space-between">
+            <v-card-subtitle class="d-flex pa-0 pb-4 align-self-center">
+                <v-avatar class="mr-3" size="50">
+                    <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                </v-avatar> 
+                <a class="body-1 ma-0 align-self-center" href="#">
+                    This is a very long username
+                </a>
+            </v-card-subtitle>
+            <span class="body-2 align-self-center">{{comment.date}}</span>
+        </div>
 
-        <v-card-text class="comment-content">
-            Multi-Target Reload for XAML Hot Reload – This is amazing!!!
-            Thank you guys, this is very helpful to all developers.
-            In many cases, we need to validate many layouts on different platforms at the same time, the gain in productivity will increase a lot! 
-            God, Alla, Buddha Bless you 😀
+        <v-card-text class="text--primary body-1">
+            {{comment.message}}
         </v-card-text>
     </v-card>
 </template>
 
 <script>
+import DateFormat from '../util/DateFormat'
+
 export default {
     name: 'CommentItem',
-    props: ['comment']
+    props: ['comment'],
+    created() {
+        this.$props['comment'].date = DateFormat(this.$props['comment'].date)
+    }
 }
 </script>
 

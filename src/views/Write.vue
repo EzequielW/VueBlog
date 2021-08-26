@@ -11,7 +11,7 @@
                                     <v-img class="grey lighten-3 d-flex align-center" height="250px" max-width="400px" v-ripple v-if="!preview">
                                         <p class="text-center">Image preview</p>
                                     </v-img>
-                                    <v-img height="250px" max-width="400px" v-else :src="preview.imageURL"></v-img>
+                                    <v-img height="250px" max-width="400px" v-else :src="preview.imageURL" contain></v-img>
                                 </div>
                             </ImageInput>
                         </v-col>

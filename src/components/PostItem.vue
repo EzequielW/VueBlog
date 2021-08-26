@@ -2,7 +2,7 @@
     <v-card class="post-item mb-6">
         <div class="d-flex flex-sm-row flex-column">
             <v-col class="pr-sm-0 pb-0 pb-sm-3" cols="12" sm="5" md="4">
-                <v-img :src="post.imgPreview" max-height="250px"/>
+                <v-img :src="post.imgPreview" max-height="250px" contain/>
             </v-col>
             <v-col class="px-0 pt-0 pb-3" cols="12" sm="7" md="8">
                 <router-link :to="'/posts/' + post._id">

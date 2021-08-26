@@ -10,6 +10,7 @@ import store from './store/store'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
+    mode: 'history',
     routes: [
         {
             path: '/',
@@ -49,6 +50,11 @@ const router = new VueRouter({
                 title: 'Write',
                 requiresAuth: true
             }
+        },
+        {
+            path :'*',
+            component: Home,
+            meta: { title: 'Home' }
         }
     ]
 })

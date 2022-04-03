@@ -2,7 +2,7 @@
   <v-app id="main-app">
     <Header />
 
-    <v-main>
+    <v-main >
       <router-view/>
       <router-link v-if="$store.state.loggedIn" to="/write">
         <v-btn color="green" class="v-btn--example" fab fixed large dark bottom right>
@@ -33,7 +33,7 @@ export default {
     text-decoration: none;
   }
 
-  .container{
+  v-main{
     background-color: #F8F8F8;
   }
 </style>

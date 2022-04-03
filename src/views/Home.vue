@@ -14,7 +14,7 @@
             <v-row>
               <v-col cols="12" md="9">
                 <PostList v-bind:posts="posts"/>
-                <v-pagination :length="15" :total-visible="7" circle/>
+                <v-pagination v-model="page" :length="totalPages" :total-visible="2" @input="changePage" circle/>
               </v-col>
 
               <v-col class="pl-4" cols="12" md="3">
@@ -39,14 +39,29 @@ export default {
     },
     data (){
       return {
-        posts: ''
+        posts: '',
+        totalPages: 1,
+        page: 1
       }
     },
     created() {
-        api().get('posts')
-        .then(res => this.posts = res.data)
+        api().get(`posts?page=1&per_page=10`)
+        .then(res => {
+          this.posts = res.data.posts;
+          this.totalPages = res.data.totalPages;
+        })
         .catch(err => console.log(err.response.data))
     },
+    methods: {
+      changePage: function(page) {
+        api().get(`posts?page=${page}&per_page=10`)
+        .then(res => {
+          this.posts = res.data.posts;
+          this.totalPages = res.data.totalPages;
+        })
+        .catch(err => console.log(err.response.data))
+      }
+    }
 }
 </script>
 

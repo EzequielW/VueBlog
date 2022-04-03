@@ -4,11 +4,12 @@
 
     <v-main >
       <router-view/>
-      <router-link v-if="$store.state.loggedIn" to="/write">
-        <v-btn color="green" class="v-btn--example" fab fixed large dark bottom right>
-          <v-icon>mdi-plus</v-icon>
+      <router-link v-if="$store.state.loggedIn && $route.name!=='write'" to="/write">
+        <v-btn color="green" icon size="x-large" id="write-fab">
+          <v-icon color="white">mdi-plus</v-icon>
         </v-btn>
       </router-link>
+      
     </v-main>
     
     <v-footer color="indigo lighten-1">
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import Header from './components/layout/Header';
+import Header from './components/Header';
 
 export default {
   name: 'App',
@@ -33,7 +34,15 @@ export default {
     text-decoration: none;
   }
 
-  v-main{
-    background-color: #F8F8F8;
+  .v-main{
+    background-color: #F6F6F6;
+    min-height: 100vh;
+  }
+
+  #write-fab{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
   }
 </style>

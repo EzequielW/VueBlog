@@ -1,10 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import jwt_decode from 'jwt-decode'
+import { createStore } from 'vuex';
+import jwt_decode from 'jwt-decode';
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+export const store = createStore({
     strict: true,
     state: {
         token: localStorage.getItem('token'),

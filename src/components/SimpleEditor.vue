@@ -51,7 +51,7 @@ export default {
     this.initializeEditor()
   },
 
-  beforeDestroy () {
+  beforeUnmount () {
     // Turn off all listeners set on text-change
     this.editorInstance.off('text-change')
   },

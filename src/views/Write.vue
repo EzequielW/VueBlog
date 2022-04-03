@@ -7,12 +7,12 @@
                     <v-card class="d-flex flex-no-wrap mb-8"> 
                         <v-col cols="4">
                             <ImageInput class="input-image" v-model="preview">
-                                <div slot="activator">
-                                    <v-img class="grey lighten-3 d-flex align-center" height="250px" max-width="400px" v-ripple v-if="!preview">
+                                <template v-slot:activator="{ on }">
+                                    <v-img class="grey lighten-3 d-flex align-center" height="250px" max-width="400px" v-ripple v-if="!preview" v-on="on">
                                         <p class="text-center">Image preview</p>
                                     </v-img>
                                     <v-img height="250px" max-width="400px" v-else :src="preview.imageURL" contain></v-img>
-                                </div>
+                                </template>
                             </ImageInput>
                         </v-col>
                         <v-col cols="8 pa-0">

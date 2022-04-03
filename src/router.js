@@ -1,15 +1,13 @@
-import Vue from 'vue'
-import VueRouter  from 'vue-router'
+import { createRouter, createWebHashHistory }  from 'vue-router'
 import Home from './views/Home'
 import Register from './views/Register'
 import Login from './views/Login'
 import Post from './views/Post'
 import Write from './views/Write'
-import store from './store/store'
+import { store } from './store/store'
 
-Vue.use(VueRouter)
-
-const router = new VueRouter({
+const router = createRouter({
+    history: createWebHashHistory(),
     mode: 'history',
     routes: [
         {
@@ -52,7 +50,7 @@ const router = new VueRouter({
             }
         },
         {
-            path :'*',
+            path :'/:catchAll(.*)',
             component: Home,
             meta: { title: 'Home' }
         }

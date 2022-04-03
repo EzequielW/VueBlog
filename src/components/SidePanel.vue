@@ -1,6 +1,6 @@
 <template>
     <div>    
-        <v-card>
+        <v-card elevation="0" class="rounded-0" color="#fff">
             <v-card-title class="headline">Related Blogs</v-card-title>
 
             <v-card-text>

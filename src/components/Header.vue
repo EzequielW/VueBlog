@@ -1,37 +1,37 @@
 <template>
     <div>
       <v-app-bar color="indigo lighten-1 px-sm-14" fade-on-scroll dark> 
-        <v-app-bar-nav-icon @click="drawer = true" v-show="$vuetify.breakpoint.xsOnly"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon @click="drawer = true" v-show="xs"></v-app-bar-nav-icon>
         <router-link to="/">
-          <v-img class="mx-2" :src="require('@/assets/logo.png')" max-height="40" max-width="40" contain/>
+          <v-img class="mx-2" src="@/assets/logo.png" height="40" width="40"/>
         </router-link>
-        <v-toolbar-title>VueBlog</v-toolbar-title>
-
-        <v-divider class="mx-4" vertical v-show="$vuetify.breakpoint.smAndUp"/>
+        <router-link to="/">
+          <v-app-bar-title>VueBlog</v-app-bar-title>
+        </router-link>
+        <v-divider class="mx-4" vertical v-if="smAndUp"/>
 
         <!-- Main navigation, just two pages -->
-        <v-toolbar-items v-show="$vuetify.breakpoint.smAndUp">
-          <v-btn text to="/">Home</v-btn>
-          <v-btn class="mr-auto" text to="about">About</v-btn>
-        </v-toolbar-items>
-
+        <div v-if="smAndUp">
+          <v-btn to="/" color="white--text">Home</v-btn>
+          <v-btn class="mr-auto" to="about" color="white--text">About</v-btn>
+        </div>
         <v-spacer></v-spacer>
 
         <!-- Sign buttons on sm plus devices -->
-        <v-toolbar-items v-if="!$store.state.loggedIn && $vuetify.breakpoint.smAndUp">
-          <v-btn text to="login">Sign in</v-btn>
-          <v-btn text to="register">Sign up</v-btn>
-        </v-toolbar-items>
+        <div v-if="!$store.state.loggedIn && smAndUp">
+          <v-btn to="login">Sign in</v-btn>
+          <v-btn to="register">Sign up</v-btn>
+        </div>
 
         <!-- Actions when already logged in -->
-        <v-toolbar-items v-if="$store.state.loggedIn">
+        <div v-if="$store.state.loggedIn">
           <v-btn icon><v-icon>mdi-magnify</v-icon></v-btn>
           <v-btn icon><v-icon>mdi-account</v-icon></v-btn>
-          <v-btn @click="logout" icon><v-icon>mdi-logout</v-icon></v-btn>
-        </v-toolbar-items>
+          <v-btn icon @click="logout"><v-icon>mdi-logout</v-icon></v-btn>
+        </div>
         
         <!-- Mobile only sign in/up button -->
-        <v-menu left bottom v-if="!$store.state.loggedIn && $vuetify.breakpoint.xsOnly">
+        <v-menu left bottom v-if="!$store.state.loggedIn && xs">
           <template v-slot:activator="{ on, attrs }">
             <v-btn icon v-bind="attrs" v-on="on">
               <v-icon>mdi-dots-vertical</v-icon>
@@ -51,23 +51,25 @@
       <!-- Main navigation on xs devices -->
       <v-navigation-drawer v-model="drawer" absolute temporary>
         <v-list nav dense>
-          <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+          <v-list-group v-model="group" active-class="deep-purple--text text--accent-4">
             <v-list-item to="/">
-              <v-list-item-icon><v-icon>mdi-home</v-icon></v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
               <v-list-item-title>Home</v-list-item-title>
             </v-list-item>
 
             <v-list-item to="about">
-              <v-list-item-icon><v-icon>mdi-information-outline</v-icon></v-list-item-icon>
+              <v-icon>mdi-information-outline</v-icon>
               <v-list-item-title>about</v-list-item-title>
             </v-list-item>
-          </v-list-item-group>
+          </v-list-group>
         </v-list>
       </v-navigation-drawer>
     </div>
 </template>
 
 <script>
+import { useDisplay } from 'vuetify'
+
 export default {
     name: 'Header',
     data: () => ({
@@ -84,11 +86,21 @@ export default {
         }
         else this.$router.go(0)
       }
+    },
+    setup () {
+      // Destructure only the keys we want to use
+      const { xs, smAndUp } = useDisplay()
+
+      return { xs, smAndUp }
     }
 }
 </script>
 
 <style scoped>
+  a{
+    color: inherit;
+  }
+
   .v-toolbar__title{
     cursor: pointer;
   }

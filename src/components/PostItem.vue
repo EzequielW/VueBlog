@@ -1,39 +1,44 @@
 <template>
-    <v-card class="post-item mb-6">
-        <div class="d-flex flex-sm-row flex-column">
-            <v-col class="pr-sm-0 pb-0 pb-sm-3" cols="12" sm="5" md="4">
-                <v-img :src="post.imgPreview" max-height="250px" contain/>
-            </v-col>
-            <v-col class="px-0 pt-0 pb-3" cols="12" sm="7" md="8">
-                <router-link :to="'/posts/' + post._id">
-                    <v-card-title class="pb-1">{{post.title}}</v-card-title>
-                </router-link>
-                
-                <v-card-subtitle class="pt-0">
-                    <v-avatar class="mr-2" size="40">
-                        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
-                    </v-avatar> 
-                    <a class="body-1" href="#">
-                        {{post.author_id.name}}
+    <v-card class="post-item mb-6 rounded-0" color="#fff" elevation="0">
+        <v-img :src="post.imgPreview" :aspect-ratio="16/9" max-height="450px" contain/>
+
+        <v-card-header class="py-6">
+            <v-card-header-text>
+                <v-card-subtitle>
+                    <a class="body-2" href="#">
+                        {{formatDate(post.date)}} | {{post.author_id.name}}
                     </a>
                 </v-card-subtitle>
-
-                <v-card-text class="post-text body-2 pb-0" v-show="$vuetify.breakpoint.smAndUp">{{post.intro}}</v-card-text>
-            </v-col>
-        </div>
+                <p class="text-h4 text--primary">
+                    <router-link :to="'/posts/' + post._id">
+                        <v-card-title>{{post.title}}</v-card-title>
+                    </router-link>
+                </p>
+            </v-card-header-text>
+        </v-card-header>
+        
+        <!-- <v-card-text class="post-text body-2 pb-0" v-show="$vuetify.breakpoint.smAndUp">{{post.intro}}</v-card-text> -->
     </v-card>
 </template>
 
 <script>
+const moment = require('moment');
+
 export default {
     name: 'PostItem',
-    props: ['post']
+    props: ['post'],
+    methods: {
+        formatDate: function(date){
+            return moment(date).format('MMM DD, YYYY');
+        }
+    }
 }
 </script>
 
 <style scoped>
     a {
         text-decoration: none;
+        color: inherit;
     }
 
     .post-item .post-text {

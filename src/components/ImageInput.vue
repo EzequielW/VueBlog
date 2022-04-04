@@ -33,6 +33,9 @@
     // Use "value" to enable using v-model
       value: Object,
     },
+    emits: [
+      "input"
+    ],
     methods: {
       launchFilePicker(){
         this.$refs.file.click();

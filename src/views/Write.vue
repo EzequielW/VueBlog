@@ -6,9 +6,9 @@
                     <h1 class="display-1 text-center mb-6">List preview</h1>
                     <v-card class="d-flex flex-no-wrap mb-8"> 
                         <v-col cols="4">
-                            <ImageInput class="input-image" v-model="preview">
-                                <template v-slot:activator="{ on }">
-                                    <v-img class="grey lighten-3 d-flex align-center" height="250px" max-width="400px" v-ripple v-if="!preview" v-on="on">
+                            <ImageInput class="input-image" v-model="preview" v-on:input="preview=$event">
+                                <template v-slot:activator>
+                                    <v-img class="grey lighten-3 d-flex align-center" height="250px" max-width="400px" v-ripple v-if="!preview">
                                         <p class="text-center">Image preview</p>
                                     </v-img>
                                     <v-img height="250px" max-width="400px" v-else :src="preview.imageURL" contain></v-img>
@@ -26,7 +26,7 @@
                     </v-card>
 
                     <h1 class="display-1 text-center mb-6">Main content</h1>
-                    <SimpleEditor class="editor" v-model="content" :rules="contentRules" required/>
+                    <SimpleEditor class="editor" v-model="content" :rules="contentRules" v-on:input="content=$event" required/>
 
                     <v-btn color="indigo lighten-1 white--text" class="mr-2 mt-6" @click="postArticle">submit</v-btn>
                 </v-form>
@@ -76,6 +76,7 @@ export default {
             formData.append('content', this.content);
             formData.append('author_id', this.$store.state.userId);
             formData.append('file', this.preview.imageFile);
+            console.log(this.$data);
 
             const response = await Api().post('/posts', formData,
             {
@@ -85,8 +86,8 @@ export default {
             })
             
             this.$router.push('/posts/' + response.data._id)
-        }
-    }
+        },
+    },
 }
 </script>
 

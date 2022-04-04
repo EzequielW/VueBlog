@@ -41,7 +41,7 @@ export default {
         color: inherit;
     }
 
-    .post-item .post-text {
+    .post-item .v-card-title {
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;

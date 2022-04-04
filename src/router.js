@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory }  from 'vue-router'
+import { createRouter, createWebHistory }  from 'vue-router'
 import Home from './views/Home'
 import Register from './views/Register'
 import Login from './views/Login'
@@ -7,8 +7,7 @@ import Write from './views/Write'
 import { store } from './store/store'
 
 const router = createRouter({
-    history: createWebHashHistory(),
-    mode: 'history',
+    history: createWebHistory(),
     routes: [
         {
             path: '/',

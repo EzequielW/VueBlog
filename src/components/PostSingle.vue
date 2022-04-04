@@ -36,10 +36,16 @@ export default {
         padding-right: 10rem;
     }
 
+    .post-content ::v-deep(img){
+        max-width: 100%;
+        height: auto;
+    }
+
     .post-content{
-        &::v-deep img {
-            max-width: 100%;
-            height: auto;
-        }
+        overflow-wrap: break-word;
+    }
+
+    h1{
+        overflow-wrap: break-word;
     }
 </style>

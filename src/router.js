@@ -4,6 +4,7 @@ import Register from './views/Register'
 import Login from './views/Login'
 import Post from './views/Post'
 import Write from './views/Write'
+import About from './views/About'
 import { store } from './store/store'
 
 const router = createRouter({
@@ -46,6 +47,15 @@ const router = createRouter({
             meta: { 
                 title: 'Write',
                 requiresAuth: true
+            }
+        },
+        {
+            path: '/about',
+            name: 'about',
+            component: About,
+            meta: {
+                title: 'About',
+                requiresAuth: false
             }
         },
         {

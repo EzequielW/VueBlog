@@ -32,6 +32,7 @@ export default {
 <style>
   a {
     text-decoration: none;
+    color: inherit;
   }
 
   .v-main{

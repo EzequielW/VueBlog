@@ -2,7 +2,7 @@
     <v-row align="center" justify="center">
         <v-col cols="9">
             <v-card>
-                <v-form ref="form" class="ma-3 pa-6">
+                <v-form ref="form" class="ma-3 pa-6" v-model="valid">
                     <h1 class="display-1 text-center mb-6">List preview</h1>
                     <v-card class="d-flex flex-no-wrap mb-8"> 
                         <v-col cols="4">
@@ -48,6 +48,7 @@ export default {
     },
     data() { 
         return {
+            valid: false,
             title: '',
             titleRules: [
                 v => !!v || 'Title is required',
@@ -70,22 +71,24 @@ export default {
     },
     methods: {
         async postArticle() {
-            const formData = new FormData();
-            formData.append('title', this.title);
-            formData.append('intro', this.intro);
-            formData.append('content', this.content);
-            formData.append('author_id', this.$store.state.userId);
-            formData.append('file', this.preview.imageFile);
-            console.log(this.$data);
+            if(this.valid){
+                const formData = new FormData();
+                formData.append('title', this.title);
+                formData.append('intro', this.intro);
+                formData.append('content', this.content);
+                formData.append('author_id', this.$store.state.userId);
+                formData.append('file', this.preview.imageFile);
+                console.log(this.$data);
 
-            const response = await Api().post('/posts', formData,
-            {
-                headers: {
-                    'auth-token': this.$store.state.token
-                }
-            })
-            
-            this.$router.push('/posts/' + response.data._id)
+                const response = await Api().post('/posts', formData,
+                {
+                    headers: {
+                        'auth-token': this.$store.state.token
+                    }
+                })
+                
+                this.$router.push('/posts/' + response.data._id)
+            }
         },
     },
 }

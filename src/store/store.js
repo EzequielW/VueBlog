@@ -12,6 +12,7 @@ export const store = createStore({
         setToken(state, token){
             state.token = token
             state.userId = jwt_decode(token)._id
+            state.username = jwt_decode(token).username
 
             if (token){
                 state.loggedIn = true
@@ -23,6 +24,7 @@ export const store = createStore({
         removeToken(state){
             state.token = null
             state.userId = null
+            state.username = null
             state.loggedIn = false
         }
     },
@@ -30,12 +32,14 @@ export const store = createStore({
         setToken({commit}, token){
             localStorage.setItem('token', token)
             localStorage.setItem('userId', jwt_decode(token)._id)
+            localStorage.setItem('username', jwt_decode(token).username)
             localStorage.setItem('loggedIn', true)
             commit('setToken', token)
         },
         removeToken({commit}){
             localStorage.removeItem('token')
             localStorage.removeItem('userId')
+            localStorage.removeItem('username')
             localStorage.removeItem('loggedIn')
             commit('removeToken')
         }

@@ -6,7 +6,7 @@
                     <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
                 </v-avatar> 
                 <a class="body-1 ma-0 align-self-center" href="#">
-                    This is a very long username
+                    {{ this.$props['comment'].authorName }}
                 </a>
             </v-card-subtitle>
             <span class="body-2 align-self-center">{{comment.date}}</span>

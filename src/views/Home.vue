@@ -1,15 +1,16 @@
 <template>
   <div>
-    <v-img class="white--text d-flex align-center" max-height="420" src="../assets/danial-ricaros-FCHlYvR5gJI-unsplash.jpg" 
-      gradient="to top right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)" cover>
-      <div class="ma-16 pa-16">
-          <p class="text-h2 pb-4">Welcome to my blog</p>
-          <p class="text-h5">Enjoy your stay and post your articles</p>
-      </div>
-    </v-img>
+    
+    <v-container fluid class="pt-0">
+      <v-img class="white--text d-flex align-center" max-height="420" src="../assets/danial-ricaros-FCHlYvR5gJI-unsplash.jpg" 
+        gradient="to top right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)" cover>
+        <div class="ma-16 px-16">
+            <p class="text-h3 pb-4 font-weight-bold">Welcome to my blog</p>
+            <p class="text-subtitle-1">Enjoy your stay and post your articles</p>
+        </div>
+      </v-img>
 
-    <v-container fluid class="pt-10">
-        <v-row justify="center">
+        <v-row justify="center pt-10">
           <v-col cols="12" md="10">
             <v-row>
               <v-col cols="12" md="8">

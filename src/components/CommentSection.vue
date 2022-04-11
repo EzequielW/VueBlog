@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>{{quantity}} comments</h2>
+        <h2>{{comments.length}} comments</h2>
         <v-card class="px-6 pt-6 pb-3 mt-3" elevation="0">
             <v-card-subtitle class="pa-0 pb-4">
                 <!-- <v-avatar class="mr-2" size="50">
@@ -36,7 +36,6 @@ export default {
     data() {
         return {
             valid: true,
-            quantity: this.$props['comments'].length,
             message: "",
             messageRules: [
                 v => !!v || 'Comment is required',
@@ -49,11 +48,14 @@ export default {
     components: {
         CommentItem
     },
+    mounted() {
+        this.quantity = this.$props['comments'].length;
+    },
     methods: {
         async postComment() {
             const res = await this.$refs.form.validate();
             if(res.valid){
-                const response = await Api().post('posts/' + this.$route.params.id + '/comments', {
+                Api().post('posts/' + this.$route.params.id + '/comments', {
                     author: this.$store.state.userId,
                     message: this.message
                 }, 
@@ -61,8 +63,21 @@ export default {
                     headers: {
                         'auth-token': this.$store.state.token
                     }
+                }).then(async () => {
+                    this.$props['comments'].unshift({ 
+                        _id: new Date().getMilliseconds(), 
+                        author: this.$store.state.userId, 
+                        authorName: this.$store.state.username, 
+                        message: this.message, 
+                        date: new Date()
+                    });
+                    await this.$refs.form.reset();
+                    this.$nextTick(() => {
+                        this.$refs.form.resetValidation();
+                    });
+                }).catch(err => {
+                    console.error(err);
                 })
-                console.log(response)
             }
         }
     }

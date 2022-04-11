@@ -6,6 +6,7 @@ export const store = createStore({
     state: {
         token: localStorage.getItem('token'),
         userId: localStorage.getItem('userId'),
+        username: localStorage.getItem('username'),
         loggedIn: localStorage.getItem('loggedIn')
     },
     mutations:{

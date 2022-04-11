@@ -10,7 +10,7 @@
         </div>
       </v-img>
 
-        <v-row justify="center pt-10">
+        <v-row justify="center" class="pt-10">
           <v-col cols="12" md="10">
             <v-row>
               <v-col cols="12" md="8">

@@ -6,7 +6,7 @@
                     <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
                 </v-avatar> 
                 <a class="body-1 ma-0 align-self-center" href="#">
-                    {{ this.$props['comment'].authorName }}
+                    {{ comment.authorName }}
                 </a>
             </v-card-subtitle>
             <span class="body-2 align-self-center">{{comment.date}}</span>
@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import DateFormat from '../util/DateFormat'
+const moment = require('moment')
 
 export default {
     name: 'CommentItem',
     props: ['comment'],
     created() {
-        this.$props['comment'].date = DateFormat(this.$props['comment'].date)
+        this.$props['comment'].date = moment(this.$props['comment'].date).format('MMM DD, YYYY');
     }
 }
 </script>

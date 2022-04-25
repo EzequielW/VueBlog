@@ -3,12 +3,8 @@
       <v-app-bar color="indigo lighten-1 px-sm-14" fade-on-scroll dark> 
         <v-app-bar-nav-icon @click="drawer = true" v-show="xs"></v-app-bar-nav-icon>
         <router-link to="/">
-          <v-img class="mx-2" src="@/assets/logo.png" height="40" width="40"/>
+          <v-img class="mx-2" src="@/assets/logo.png" height="35" width="180"/>
         </router-link>
-        <router-link to="/">
-          <v-app-bar-title>VueBlog</v-app-bar-title>
-        </router-link>
-        <v-divider class="mx-4" vertical v-if="smAndUp"/>
 
         <!-- Main navigation, just two pages -->
         <div v-if="smAndUp">
